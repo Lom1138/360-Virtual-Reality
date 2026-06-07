@@ -227,13 +227,11 @@
 				xml:                 'tour.xml',
 				target:              'krpano-container',
 				passQueryParameters: 'startscene,startlookat',
-				onready: function (krpano) {
-					// If the video blob was pre-fetched, point the hotspot at it
-					// so it plays from memory with zero additional network request
-					if (window._cachedVideoUrl) {
-						krpano.set('scene[scene_8k360__003_post].hotspot[video].videourl',
-						           window._cachedVideoUrl);
-					}
+				onready: function () {
+					// XHR pre-fetch above has already primed the browser cache for
+					// assets/Animation.mp4 and assets/music.mp3 — when krpano and
+					// the soundinterface plugin request those URLs they get instant
+					// cache hits with no additional network round-trips needed.
 					prog.krpano = 100;
 					updateBar();
 					krpanoReady = true;
