@@ -615,7 +615,7 @@
 
 				<!-- gyro -->
 				<layer name="skin_btn_gyro"
-				       type="text" html="screen_rotation"
+				       type="text" html="3d_rotation"
 				       css="font-family:'Material Icons'; font-size:22px; color:#242625; text-align:center; line-height:60px;"
 				       css_hover="font-family:'Material Icons'; font-size:22px; color:#699477; text-align:center; line-height:60px;"
 				       width="44" height="60" bg="false"
