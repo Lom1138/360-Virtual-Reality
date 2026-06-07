@@ -68,9 +68,6 @@
         loadscene(get(startscene), null, MERGE);
         if(startactions !== null, startactions() );
 
-        <!-- The soundinterface plugin (v1.20+) handles mobile gesture unlocking  -->
-        <!-- automatically — playsound() queues the audio internally and plays    -->
-        <!-- it as soon as the browser allows it, no custom gesture logic needed. -->
         playsound(bgsnd, 'assets/music.mp3', 0);
         set(sound[bgsnd].volume, 0.75);
     </action>
@@ -148,12 +145,12 @@
 		    distorted="true"
 		    depth="20000"
 		    scale="19.375"
-		    pausedonstart="false"
+		    pausedonstart="true"
 		    loop="true"
 		    handcursor="false"
 		    enabled="false"
 		    alpha="0.0"
-		    onvideoplay="if(hotspot[video].alpha LT 1.0, tween(hotspot[video].alpha, 1.0, 1.5, easeInOutSine));"
+		    onloaded="delayedcall(0.5, hotspot[video].play(); tween(hotspot[video].alpha, 1.0, 1.5, easeInOutSine));"
 		/>
 
 	</scene>
