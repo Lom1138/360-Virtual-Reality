@@ -227,7 +227,13 @@
 				xml:                 'tour.xml',
 				target:              'krpano-container',
 				passQueryParameters: 'startscene,startlookat',
-				onready: function () {
+				onready: function (krpano) {
+					// If the video blob was pre-fetched, point the hotspot at it
+					// so it plays from memory with zero additional network request
+					if (window._cachedVideoUrl) {
+						krpano.set('scene[scene_8k360__003_post].hotspot[video].videourl',
+						           window._cachedVideoUrl);
+					}
 					prog.krpano = 100;
 					updateBar();
 					krpanoReady = true;
