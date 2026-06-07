@@ -165,6 +165,6 @@
 		}());
 	</script>
 </div>
-<script>(()=>{const f=document.querySelector('link[rel="icon"]');f&&window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>f.href=f.href.split('?')[0]+'?v='+Date.now())})();</script>
+<script>(()=>{const f=document.querySelector('link[rel="icon"]');if(!f)return;f.href=f.href.split('?')[0]+'?v='+Date.now();window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>f.href=f.href.split('?')[0]+'?v='+Date.now())})();</script>
 </body>
 </html>
