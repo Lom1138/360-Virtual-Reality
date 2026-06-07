@@ -301,8 +301,8 @@
        onclick="skin_hotspotstyle_click();"
        depth="1000"
        scale="0.5"
-       onover.addevent="tween(scale,0.55,0.15); copy(css, css_hover);"
-       onout.addevent="tween(scale,0.5,0.15); copy(css, css_normal);"
+       onover.addevent="if(device.mouse, tween(scale,0.55,0.15)); copy(css, css_hover);"
+       onout.addevent="if(device.mouse, tween(scale,0.5,0.15)); copy(css, css_normal);"
        onloaded.addevent="skin_hotspotstyle_setup();"
        />
 
@@ -392,8 +392,8 @@
 	       onclick="tween(scale, 0.45, 0.1, default, tween(scale, 0.5, 0.2)); skin_show_info(get(name));"
 	       depth="1000"
 	       scale="0.5"
-	       onover.addevent="tween(scale,0.55,0.15); copy(css, css_hover);"
-	       onout.addevent="tween(scale,0.5,0.15); copy(css, css_normal);"
+	       onover.addevent="if(device.mouse, tween(scale,0.55,0.15)); copy(css, css_hover);"
+	       onout.addevent="if(device.mouse, tween(scale,0.5,0.15)); copy(css, css_normal);"
 	       onloaded.addevent="skin_info_hotspotstyle_setup();"
 	       />
 	
@@ -422,8 +422,8 @@
 	       onclick="tween(scale, 0.45, 0.1, default, tween(scale, 0.5, 0.2)); skin_show_image_info(get(name));"
 	       depth="1000"
 	       scale="0.5"
-	       onover.addevent="tween(scale,0.55,0.15); copy(css, css_hover);"
-	       onout.addevent="tween(scale,0.5,0.15); copy(css, css_normal);"
+	       onover.addevent="if(device.mouse, tween(scale,0.55,0.15)); copy(css, css_hover);"
+	       onout.addevent="if(device.mouse, tween(scale,0.5,0.15)); copy(css, css_normal);"
 	       onloaded.addevent="skin_image_hotspotstyle_setup();"
 	       />
 
