@@ -150,7 +150,7 @@
 		    handcursor="false"
 		    enabled="false"
 		    alpha="0.0"
-		    onloaded="delayedcall(0.5, hotspot[video].play(); tween(hotspot[video].alpha, 1.0, 1.5, easeInOutSine));"
+		    onloaded="hotspot[video].play(); tween(hotspot[video].alpha, 1.0, 1.5, easeInOutSine);"
 		/>
 
 	</scene>
