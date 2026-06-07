@@ -71,7 +71,7 @@
         <!-- The soundinterface plugin (v1.20+) handles mobile gesture unlocking  -->
         <!-- automatically — playsound() queues the audio internally and plays    -->
         <!-- it as soon as the browser allows it, no custom gesture logic needed. -->
-        playsound(bgsnd, 'assets/music.m4a', 0);
+        playsound(bgsnd, 'assets/music.mp3', 0);
         set(sound[bgsnd].volume, 0.75);
     </action>
 
