@@ -68,22 +68,11 @@
         loadscene(get(startscene), null, MERGE);
         if(startactions !== null, startactions() );
 
-        <!-- Audio must be started from a user gesture on mobile/desktop.     -->
-        <!-- Register a one-shot onclick that calls a named action.           -->
-        <!-- set() cannot take a multi-line block so the logic lives in       -->
-        <!-- audio_start_play which is called by name from the event handler. -->
-        set(global.music_started, false);
-        set(events[audio_start].keep, true);
-        set(events[audio_start].onclick, audio_start_play());
-    </action>
-
-    <action name="audio_start_play">
-        if(!global.music_started,
-            set(global.music_started, true);
-            playsound(bgsnd, 'assets/music.m4a', 0);
-            set(sound[bgsnd].volume, 0.75);
-            delete(events[audio_start]);
-        );
+        <!-- The soundinterface plugin (v1.20+) handles mobile gesture unlocking  -->
+        <!-- automatically — playsound() queues the audio internally and plays    -->
+        <!-- it as soon as the browser allows it, no custom gesture logic needed. -->
+        playsound(bgsnd, 'assets/music.m4a', 0);
+        set(sound[bgsnd].volume, 0.75);
     </action>
 
 	<!--
