@@ -467,7 +467,14 @@
 			tween(hotspot[skin_info_close_vr].alpha, 1.0, 0.35);
 			tween(hotspot[skin_info_close_vr].scale, 0.6, 0.25, easeoutback);
 		  ,
-			<!-- NORMAL MODE: build html with txtadd so apostrophes in title are safe -->
+			<!-- NORMAL MODE: build html with txtadd — chess strip on left, image content on right -->
+			set(chess_strip, '[div style="');
+			txtadd(chess_strip, get(chess_strip), 'width:32px; min-width:32px; border-radius:8px 0 0 8px; ');
+			txtadd(chess_strip, get(chess_strip), 'background-color:#eff1ed; ');
+			txtadd(chess_strip, get(chess_strip), 'background-image:linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625),linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625); ');
+			txtadd(chess_strip, get(chess_strip), 'background-size:16px 16px; background-position:0 0,8px 8px;');
+			txtadd(chess_strip, get(chess_strip), '"][/div]');
+
 			set(info_title_html, '[div style="margin-bottom:16px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:');
 			txtadd(info_title_html, get(info_title_html), get(info_titlesize));
 			txtadd(info_title_html, get(info_title_html), '; font-weight:900; color:#242625;"]');
@@ -476,7 +483,13 @@
 			set(info_body_html, '[div style="line-height:0;"][img src="');
 			txtadd(info_body_html, get(info_body_html), get(infoimage));
 			txtadd(info_body_html, get(info_body_html), '" style="width:100%; height:auto; display:block; border-radius:6px;"][/div]');
-			txtadd(info_html, get(info_title_html), get(info_body_html));
+
+			set(info_html, '[div style="display:flex; gap:0; margin:-1px;"]');
+			txtadd(info_html, get(info_html), get(chess_strip));
+			txtadd(info_html, get(info_html), '[div style="flex:1; padding:24px; min-width:0;"]');
+			txtadd(info_html, get(info_html), get(info_title_html));
+			txtadd(info_html, get(info_html), get(info_body_html));
+			txtadd(info_html, get(info_html), '[/div][/div]');
 			copy(layer[skin_info_box].html, info_html);
 
 			set(layer[skin_info_overlay].visible, true);
@@ -687,11 +700,11 @@
 		       maxwidth="calc:device.mobile ? 420 : 500"
 		       autoheight="true"
 		       bgcolor="0xeff1ed" bgalpha="1.0" bgroundedge="12" bgshadow="0 10 30 0x000000 0.5"
-		       padding="calc:device.mobile ? 24 : 40"
+		       padding="0"
 		       bgcapture="true"
 		       handcursor="false"
 		       html="">
-			<layer name="skin_info_close" type="text" align="righttop" edge="center" x="20" y="20"
+			<layer name="skin_info_close" type="text" align="righttop" edge="center" x="16" y="16"
 			       html="close" css="font-family:'Material Icons'; font-size:28px; color:#242625; cursor:pointer;"
 			       bg="false" zorder="2" onclick="skin_hide_info();" onover="tween(alpha, 0.5);" onout="tween(alpha, 1.0);" />
 		</layer>
@@ -806,7 +819,15 @@
 			tween(hotspot[skin_info_close_vr].alpha, 1.0, 0.35);
 			tween(hotspot[skin_info_close_vr].scale, 0.6, 0.25, easeoutback);
 		  ,
-			<!-- NORMAL MODE: build html with txtadd so apostrophes in content are safe -->
+			<!-- NORMAL MODE: wrap content in flex layout with chess strip on left -->
+			<!-- Chess pattern uses two offset 45deg gradients — pure CSS, no image -->
+			set(chess_strip, '[div style="');
+			txtadd(chess_strip, get(chess_strip), 'width:32px; min-width:32px; border-radius:8px 0 0 8px; ');
+			txtadd(chess_strip, get(chess_strip), 'background-color:#eff1ed; ');
+			txtadd(chess_strip, get(chess_strip), 'background-image:linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625),linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625); ');
+			txtadd(chess_strip, get(chess_strip), 'background-size:16px 16px; background-position:0 0,8px 8px;');
+			txtadd(chess_strip, get(chess_strip), '"][/div]');
+
 			set(info_title_html, '[div style="margin-bottom:12px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:');
 			txtadd(info_title_html, get(info_title_html), get(info_titlesize));
 			txtadd(info_title_html, get(info_title_html), '; font-weight:900; color:#242625;"]');
@@ -815,7 +836,18 @@
 			set(info_body_html, '[div style="font-family:Hanken Grotesk, Arial, sans-serif; font-size:15px; line-height:1.6; color:#242625;"]');
 			txtadd(info_body_html, get(info_body_html), get(infobody));
 			txtadd(info_body_html, get(info_body_html), '[/div]');
-			txtadd(info_html, get(info_title_html), get(info_body_html));
+
+			set(info_content, '[div style="flex:1; min-width:0;"]');
+			txtadd(info_content, get(info_content), get(info_title_html));
+			txtadd(info_content, get(info_content), get(info_body_html));
+			txtadd(info_content, get(info_content), '[/div]');
+
+			set(info_html, '[div style="display:flex; gap:0; margin:-1px;"]');
+			txtadd(info_html, get(info_html), get(chess_strip));
+			txtadd(info_html, get(info_html), '[div style="flex:1; padding:24px; min-width:0;"]');
+			txtadd(info_html, get(info_html), get(info_title_html));
+			txtadd(info_html, get(info_html), get(info_body_html));
+			txtadd(info_html, get(info_html), '[/div][/div]');
 			copy(layer[skin_info_box].html, info_html);
 
 			set(layer[skin_info_overlay].visible, true);
