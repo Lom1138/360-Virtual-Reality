@@ -441,32 +441,13 @@
 		calc(info_titlesize, device.mobile ? '22px' : '32px');
 
 		if(webvr.isenabled,
-			<!-- VR MODE: pure HTML bgcolor chess pattern — no CSS, works in WebGL renderer -->
-			<!-- Chess column: nested table of 8x8 cells, alternating bgcolor, no CSS needed -->
-			set(chess_col, '[table style="width:32px; border-collapse:collapse; margin:0; padding:0;"]');
-			set(chess_row_a, '[tr][td width="16" height="16" bgcolor="#242625"][/td][td width="16" height="16" bgcolor="#eff1ed"][/td][/tr]');
-			set(chess_row_b, '[tr][td width="16" height="16" bgcolor="#eff1ed"][/td][td width="16" height="16" bgcolor="#242625"][/td][/tr]');
-			loop(set(vr_chess_i, 0); vr_chess_i LT 20; inc(vr_chess_i),
-				txtadd(chess_col, get(chess_col), get(chess_row_a));
-				txtadd(chess_col, get(chess_col), get(chess_row_b));
-			);
-			txtadd(chess_col, get(chess_col), '[/table]');
-
 			set(info_title_html, '[div style="margin-bottom:12px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:32px; font-weight:900; color:#242625;"]');
 			txtadd(info_title_html, get(info_title_html), get(infotitle));
 			txtadd(info_title_html, get(info_title_html), '[/div]');
 			set(info_body_html, '[div style="line-height:0;"][img src="');
 			txtadd(info_body_html, get(info_body_html), get(infoimage));
 			txtadd(info_body_html, get(info_body_html), '" style="width:100%; height:auto; display:block; border-radius:6px;"][/div]');
-
-			set(info_html, '[table style="width:100%; border-collapse:collapse;"][tr]');
-			txtadd(info_html, get(info_html), '[td width="32" valign="top" style="padding:0;"]');
-			txtadd(info_html, get(info_html), get(chess_col));
-			txtadd(info_html, get(info_html), '[/td]');
-			txtadd(info_html, get(info_html), '[td valign="top" style="padding:24px;"]');
-			txtadd(info_html, get(info_html), get(info_title_html));
-			txtadd(info_html, get(info_html), get(info_body_html));
-			txtadd(info_html, get(info_html), '[/td][/tr][/table]');
+			txtadd(info_html, get(info_title_html), get(info_body_html));
 			copy(hotspot[skin_info_box_vr].html, info_html);
 
 			copy(hotspot[skin_info_box_vr].ath, view.hlookat);
@@ -811,31 +792,14 @@
 		calc(info_titlesize, device.mobile ? '22px' : '32px');
 
 		if(webvr.isenabled,
-			<!-- VR MODE: pure HTML bgcolor chess pattern — no CSS, works in WebGL renderer -->
-			set(chess_col, '[table style="width:32px; border-collapse:collapse; margin:0; padding:0;"]');
-			set(chess_row_a, '[tr][td width="16" height="16" bgcolor="#242625"][/td][td width="16" height="16" bgcolor="#eff1ed"][/td][/tr]');
-			set(chess_row_b, '[tr][td width="16" height="16" bgcolor="#eff1ed"][/td][td width="16" height="16" bgcolor="#242625"][/td][/tr]');
-			loop(set(vr_chess_i, 0); vr_chess_i LT 20; inc(vr_chess_i),
-				txtadd(chess_col, get(chess_col), get(chess_row_a));
-				txtadd(chess_col, get(chess_col), get(chess_row_b));
-			);
-			txtadd(chess_col, get(chess_col), '[/table]');
-
+			<!-- VR MODE: build HTML inline — VR text hotspot has no child layers -->
 			set(info_title_html, '[div style="margin-bottom:12px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:32px; font-weight:900; color:#242625;"]');
 			txtadd(info_title_html, get(info_title_html), get(infotitle));
 			txtadd(info_title_html, get(info_title_html), '[/div]');
 			set(info_body_html, '[div style="font-family:Hanken Grotesk, Arial, sans-serif; font-size:15px; line-height:1.6; color:#242625;"]');
 			txtadd(info_body_html, get(info_body_html), get(infobody));
 			txtadd(info_body_html, get(info_body_html), '[/div]');
-
-			set(info_html, '[table style="width:100%; border-collapse:collapse;"][tr]');
-			txtadd(info_html, get(info_html), '[td width="32" valign="top" style="padding:0;"]');
-			txtadd(info_html, get(info_html), get(chess_col));
-			txtadd(info_html, get(info_html), '[/td]');
-			txtadd(info_html, get(info_html), '[td valign="top" style="padding:24px;"]');
-			txtadd(info_html, get(info_html), get(info_title_html));
-			txtadd(info_html, get(info_html), get(info_body_html));
-			txtadd(info_html, get(info_html), '[/td][/tr][/table]');
+			txtadd(info_html, get(info_title_html), get(info_body_html));
 			copy(hotspot[skin_info_box_vr].html, info_html);
 
 			copy(hotspot[skin_info_box_vr].ath, view.hlookat);
