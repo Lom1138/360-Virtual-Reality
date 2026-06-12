@@ -441,13 +441,9 @@
 		calc(info_titlesize, device.mobile ? '22px' : '32px');
 
 		if(webvr.isenabled,
-			<!-- VR MODE: build HTML with chess strip — same layout as normal mode -->
-			set(chess_strip, '[div style="');
-			txtadd(chess_strip, get(chess_strip), 'width:32px; min-width:32px; border-radius:8px 0 0 8px; ');
-			txtadd(chess_strip, get(chess_strip), 'background-color:#eff1ed; ');
-			txtadd(chess_strip, get(chess_strip), 'background-image:linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625),linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625); ');
-			txtadd(chess_strip, get(chess_strip), 'background-size:16px 16px; background-position:0 0,8px 8px;');
-			txtadd(chess_strip, get(chess_strip), '"][/div]');
+			<!-- VR MODE: table layout (flex unsupported in krpano WebGL renderer)  -->
+			<!-- SVG data URI for chess pattern (CSS gradients unreliable in WebGL) -->
+			set(vr_chess_svg, 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22%3E%3Crect width=%228%22 height=%228%22 fill=%22%23242625%22/%3E%3Crect x=%228%22 y=%228%22 width=%228%22 height=%228%22 fill=%22%23242625%22/%3E%3C/svg%3E');
 
 			set(info_title_html, '[div style="margin-bottom:12px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:32px; font-weight:900; color:#242625;"]');
 			txtadd(info_title_html, get(info_title_html), get(infotitle));
@@ -456,12 +452,14 @@
 			txtadd(info_body_html, get(info_body_html), get(infoimage));
 			txtadd(info_body_html, get(info_body_html), '" style="width:100%; height:auto; display:block; border-radius:6px;"][/div]');
 
-			set(info_html, '[div style="display:flex; gap:0; margin:-1px;"]');
-			txtadd(info_html, get(info_html), get(chess_strip));
-			txtadd(info_html, get(info_html), '[div style="flex:1; padding:24px; min-width:0;"]');
+			set(info_html, '[table style="width:100%; border-collapse:collapse;"][tr]');
+			txtadd(info_html, get(info_html), '[td style="width:32px; padding:0; background-color:#eff1ed; background-image:url(');
+			txtadd(info_html, get(info_html), get(vr_chess_svg));
+			txtadd(info_html, get(info_html), '); background-repeat:repeat; background-size:16px 16px;"][/td]');
+			txtadd(info_html, get(info_html), '[td style="padding:24px; vertical-align:top;"]');
 			txtadd(info_html, get(info_html), get(info_title_html));
 			txtadd(info_html, get(info_html), get(info_body_html));
-			txtadd(info_html, get(info_html), '[/div][/div]');
+			txtadd(info_html, get(info_html), '[/td][/tr][/table]');
 			copy(hotspot[skin_info_box_vr].html, info_html);
 
 			copy(hotspot[skin_info_box_vr].ath, view.hlookat);
@@ -807,13 +805,9 @@
 
 		if(webvr.isenabled,
 			<!-- VR MODE: build HTML inline — VR text hotspot has no child layers -->
-			<!-- VR MODE: build HTML with chess strip — same layout as normal mode -->
-			set(chess_strip, '[div style="');
-			txtadd(chess_strip, get(chess_strip), 'width:32px; min-width:32px; border-radius:8px 0 0 8px; ');
-			txtadd(chess_strip, get(chess_strip), 'background-color:#eff1ed; ');
-			txtadd(chess_strip, get(chess_strip), 'background-image:linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625),linear-gradient(45deg,#242625 25%,transparent 25%,transparent 75%,#242625 75%,#242625); ');
-			txtadd(chess_strip, get(chess_strip), 'background-size:16px 16px; background-position:0 0,8px 8px;');
-			txtadd(chess_strip, get(chess_strip), '"][/div]');
+			<!-- VR MODE: table layout (flex unsupported in krpano WebGL renderer)  -->
+			<!-- SVG data URI for chess pattern (CSS gradients unreliable in WebGL) -->
+			set(vr_chess_svg, 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22%3E%3Crect width=%228%22 height=%228%22 fill=%22%23242625%22/%3E%3Crect x=%228%22 y=%228%22 width=%228%22 height=%228%22 fill=%22%23242625%22/%3E%3C/svg%3E');
 
 			set(info_title_html, '[div style="margin-bottom:12px; font-family:Hanken Grotesk, Arial, sans-serif; font-size:32px; font-weight:900; color:#242625;"]');
 			txtadd(info_title_html, get(info_title_html), get(infotitle));
@@ -822,12 +816,14 @@
 			txtadd(info_body_html, get(info_body_html), get(infobody));
 			txtadd(info_body_html, get(info_body_html), '[/div]');
 
-			set(info_html, '[div style="display:flex; gap:0; margin:-1px;"]');
-			txtadd(info_html, get(info_html), get(chess_strip));
-			txtadd(info_html, get(info_html), '[div style="flex:1; padding:24px; min-width:0;"]');
+			set(info_html, '[table style="width:100%; border-collapse:collapse;"][tr]');
+			txtadd(info_html, get(info_html), '[td style="width:32px; padding:0; background-color:#eff1ed; background-image:url(');
+			txtadd(info_html, get(info_html), get(vr_chess_svg));
+			txtadd(info_html, get(info_html), '); background-repeat:repeat; background-size:16px 16px;"][/td]');
+			txtadd(info_html, get(info_html), '[td style="padding:24px; vertical-align:top;"]');
 			txtadd(info_html, get(info_html), get(info_title_html));
 			txtadd(info_html, get(info_html), get(info_body_html));
-			txtadd(info_html, get(info_html), '[/div][/div]');
+			txtadd(info_html, get(info_html), '[/td][/tr][/table]');
 			copy(hotspot[skin_info_box_vr].html, info_html);
 
 			copy(hotspot[skin_info_box_vr].ath, view.hlookat);
