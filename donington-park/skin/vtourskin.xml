@@ -454,7 +454,7 @@
 			copy(hotspot[skin_info_box_vr].atv, view.vlookat);
 
 			copy(hotspot[skin_info_close_vr].ath, view.hlookat);
-			calc(hotspot[skin_info_close_vr].atv, view.vlookat + 18);
+			calc(hotspot[skin_info_close_vr].atv, view.vlookat + 24);
 			set(hotspot[skin_info_close_vr].html, '[div style="font-family:Hanken Grotesk, Arial, sans-serif; font-size:18px; font-weight:700; color:#FFFFFF; text-align:center; line-height:64px; letter-spacing:0.05em;"]✕  CLOSE[/div]');
 
 			set(hotspot[skin_info_box_vr].visible, true);
@@ -806,7 +806,7 @@
 			copy(hotspot[skin_info_box_vr].atv, view.vlookat);
 
 			copy(hotspot[skin_info_close_vr].ath, view.hlookat);
-			calc(hotspot[skin_info_close_vr].atv, view.vlookat + 18);
+			calc(hotspot[skin_info_close_vr].atv, view.vlookat + 24);
 			set(hotspot[skin_info_close_vr].html, '[div style="font-family:Hanken Grotesk, Arial, sans-serif; font-size:18px; font-weight:700; color:#FFFFFF; text-align:center; line-height:64px; letter-spacing:0.05em;"]✕  CLOSE[/div]');
 
 			set(hotspot[skin_info_box_vr].visible, true);
